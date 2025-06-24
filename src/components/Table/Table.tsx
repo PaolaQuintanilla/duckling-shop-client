@@ -44,7 +44,7 @@ const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
                 className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
                 onClick={() => onDelete(duck.id)}
               >
-                Eliminar
+                Borrar
               </button>
             </td>
           </tr>

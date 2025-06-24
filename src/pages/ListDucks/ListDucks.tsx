@@ -19,11 +19,16 @@ const ListDucks = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <Card
-        title="Gestión de Patitos"
+        title="Almacen de Patitos"
         footer={
           <p className="text-sm text-gray-500">Total: {ducks.length} patitos</p>
         }
       >
+        <div className="border p-2">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded">
+            Agregar Patito
+          </button>
+        </div>
         <DuckTable ducks={ducks} onEdit={handleEdit} onDelete={handleDelete} />
       </Card>
     </div>
