@@ -12,7 +12,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/tienda" className="hover:underline">
+            <Link to="/" className="hover:underline">
               Tienda
             </Link>
           </li>

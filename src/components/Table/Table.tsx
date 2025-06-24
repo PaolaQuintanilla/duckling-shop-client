@@ -1,15 +1,9 @@
-type Duck = {
-  id: number;
-  color: string;
-  size: string;
-  price: number;
-  quantity: number;
-};
+import type { Duck } from "../../types/DuckTypes";
 
 type DuckTableProps = {
   ducks: Duck[];
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
 const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
@@ -27,8 +21,8 @@ const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
       </thead>
       <tbody>
         {ducks.map((duck) => (
-          <tr key={duck.id} className="text-center">
-            <td className="border px-4 py-2">{duck.id}</td>
+          <tr key={duck._id} className="text-center">
+            <td className="border px-4 py-2">{duck._id}</td>
             <td className="border px-4 py-2">{duck.color}</td>
             <td className="border px-4 py-2">{duck.size}</td>
             <td className="border px-4 py-2">${duck.price}</td>
@@ -36,13 +30,13 @@ const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
             <td className="border px-4 py-2">
               <button
                 className="bg-yellow-400 hover:bg-yellow-500 text-white px-2 py-1 rounded mr-2"
-                onClick={() => onEdit(duck.id)}
+                onClick={() => onEdit(duck._id)}
               >
                 Editar
               </button>
               <button
                 className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
-                onClick={() => onDelete(duck.id)}
+                onClick={() => onDelete(duck._id)}
               >
                 Borrar
               </button>

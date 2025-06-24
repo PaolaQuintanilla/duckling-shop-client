@@ -1,21 +1,17 @@
 import { useFormik } from "formik";
 import { schemaFormDuck } from "../Validations/LoginValidation";
-
-export type DuckInput = {
-  color: string;
-  size: string;
-  price: number;
-  quantity: number;
-};
+import type { DuckInput } from "../../types/DuckTypes";
 
 type DuckFormProps = {
   onSubmit: (duck: DuckInput) => void;
+  initialValuesEdit?: DuckInput;
+  editMode?: boolean;
 };
 
 const colorOptions = ["Red", "Yellow", "Black", "Green"];
 const sizeOptions = ["XSmall", "Small", "Medium", "Large", "XLarge"];
 
-const DuckForm = ({ onSubmit }: DuckFormProps) => {
+const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
   const initialValues: DuckInput = {
     color: "",
     size: "",
@@ -24,7 +20,7 @@ const DuckForm = ({ onSubmit }: DuckFormProps) => {
   };
 
   const formik = useFormik<DuckInput>({
-    initialValues: initialValues,
+    initialValues: initialValuesEdit || initialValues,
     validationSchema: schemaFormDuck,
     onSubmit: (values, { resetForm }) => {
       onSubmit(values);
@@ -42,10 +38,13 @@ const DuckForm = ({ onSubmit }: DuckFormProps) => {
         <label className="block text-sm font-medium">Color</label>
         <select
           name="color"
+          disabled={editMode}
           value={formik.values.color}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border rounded px-3 py-2"
+          className={`w-full border rounded px-3 py-2 ${
+            editMode ? "bg-gray-100 text-gray-500 cursor-not-allowed" : ""
+          }`}
         >
           <option value="">Selecciona un color</option>
           {colorOptions.map((color) => (
@@ -65,9 +64,12 @@ const DuckForm = ({ onSubmit }: DuckFormProps) => {
         <select
           name="size"
           value={formik.values.size}
+          disabled={editMode}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          className="w-full border rounded px-3 py-2"
+          className={`w-full border rounded px-3 py-2 ${
+            editMode ? "bg-gray-100 text-gray-500 cursor-not-allowed" : ""
+          }`}
         >
           <option value="">Selecciona un tamaño</option>
           {sizeOptions.map((size) => (
@@ -117,7 +119,7 @@ const DuckForm = ({ onSubmit }: DuckFormProps) => {
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full md:w-auto"
         >
-          Crear Patito
+          {editMode ? "Actualizar Patito" : "Crear Patito"}
         </button>
       </div>
     </form>
