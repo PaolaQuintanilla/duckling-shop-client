@@ -43,14 +43,14 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
     try {
       if (editMode && id) {
         await updateDuck(id, data);
-        alert("Patito actualizado ✅");
+        console.log("Patito actualizado ✅");
       } else {
         await createDuck(data);
-        alert("Patito creado ✅");
+        console.log("Patito creado ✅");
       }
       navigate("/almacen");
     } catch (err) {
-      alert("Error al guardar el patito ❌" + err);
+      console.log("Error al guardar el patito ❌" + err);
     }
   };
 
