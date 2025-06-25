@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { DuckInput } from "../types/DuckTypes";
+import type { DuckInput } from "../utils/types/DuckTypes";
 
 const API_URL = "http://localhost:3000/ducks";
 

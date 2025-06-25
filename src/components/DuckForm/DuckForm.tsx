@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
-import { schemaFormDuck } from "../Validations/LoginValidation";
-import type { DuckInput } from "../../types/DuckTypes";
+import { schemaFormDuck } from "../../utils/Validations/LoginValidation";
+import type { DuckInput } from "../../utils/types/DuckTypes";
 
 type DuckFormProps = {
   onSubmit: (duck: DuckInput) => void;

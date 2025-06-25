@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
-import DuckForm from "../DuckForm/DuckForm";
+import DuckForm from "../../components/DuckForm/DuckForm";
 import { useNavigate, useParams } from "react-router";
 import { useDucks } from "../../hooks/useDucks";
-import type { DuckInput } from "../../types/DuckTypes";
+import type { DuckInput } from "../../utils/types/DuckTypes";
 
 type DuckFormPageProps = {
   editMode?: boolean;

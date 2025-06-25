@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import DuckTable from "../../components/Table/Table";
 import { useNavigate } from "react-router";
-import type { Duck } from "../../types/DuckTypes";
+import type { Duck } from "../../utils/types/DuckTypes";
 import { duckService } from "../../services/duckService";
 import ConfirmModal from "../../components/ConfirmModal/ConfirmModal";
 

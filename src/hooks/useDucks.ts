@@ -1,5 +1,5 @@
 import { duckService } from "../services/duckService";
-import type { DuckInput } from "../types/DuckTypes";
+import type { DuckInput } from "../utils/types/DuckTypes";
 
 export function useDucks() {
   const createDuck = async (data: DuckInput) => {
