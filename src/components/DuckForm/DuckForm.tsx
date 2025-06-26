@@ -1,15 +1,13 @@
 import { useFormik } from "formik";
 import { schemaFormDuck } from "../../utils/Validations/LoginValidation";
 import type { DuckInput } from "../../utils/types/DuckTypes";
+import { colorOptions, sizeOptions } from "../../utils/convertColorAndSize";
 
 type DuckFormProps = {
   onSubmit: (duck: DuckInput) => void;
   initialValuesEdit?: DuckInput;
   editMode?: boolean;
 };
-
-const colorOptions = ["Red", "Yellow", "Black", "Green"];
-const sizeOptions = ["XSmall", "Small", "Medium", "Large", "XLarge"];
 
 const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
   const initialValues: DuckInput = {
@@ -47,9 +45,9 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
           }`}
         >
           <option value="">Selecciona un color</option>
-          {colorOptions.map((color) => (
-            <option key={color} value={color}>
-              {color}
+          {colorOptions.map((c) => (
+            <option key={c.value} value={c.name}>
+              {c.name}
             </option>
           ))}
         </select>
@@ -72,9 +70,9 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
           }`}
         >
           <option value="">Selecciona un tamaño</option>
-          {sizeOptions.map((size) => (
-            <option key={size} value={size}>
-              {size}
+          {sizeOptions.map((s) => (
+            <option key={s.value} value={s.name}>
+              {s.name}
             </option>
           ))}
         </select>

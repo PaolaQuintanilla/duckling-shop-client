@@ -4,6 +4,7 @@ import DuckForm from "../../components/DuckForm/DuckForm";
 import { useNavigate, useParams } from "react-router";
 import { useDucks } from "../../hooks/useDucks";
 import type { DuckInput } from "../../utils/types/DuckTypes";
+import { convertToEnglish } from "../../utils/convertColorAndSize";
 
 type DuckFormPageProps = {
   editMode?: boolean;
@@ -26,7 +27,15 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
           const response = await fetch(`http://localhost:3000/ducks/${id}`);
           if (!response.ok) throw new Error("No se pudo obtener el patito");
           const data = await response.json();
-          setInitialValues(data);
+
+          const { color, size } = data;
+          const { color: spanishColor, size: spanishSize } = convertToEnglish(
+            color,
+            size,
+            true
+          );
+
+          setInitialValues({ ...data, color: spanishColor, size: spanishSize });
         } catch (error) {
           console.error("Error cargando el patito:", error);
           navigate("/almacen");
@@ -41,6 +50,12 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
 
   const addDuck = async (data: DuckInput) => {
     try {
+      const { color: englishColor, size: englishSize } = convertToEnglish(
+        data.color,
+        data.size
+      );
+      data.color = englishColor;
+      data.size = englishSize;
       if (editMode && id) {
         await updateDuck(id, data);
         console.log("Patito actualizado ✅");
