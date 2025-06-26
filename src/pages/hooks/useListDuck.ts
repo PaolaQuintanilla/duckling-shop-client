@@ -1,4 +1,3 @@
-// src/hooks/useDuckList.ts
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { duckService } from "../../services/duckService";
