@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { schemaFormDuck } from "../../utils/Validations/LoginValidation";
+import { schemaFormDuck } from "../../utils/validations/LoginValidation";
 import type { DuckInput } from "../../utils/types/DuckTypes";
 import { colorOptions, sizeOptions } from "../../utils/convertColorAndSize";
 
@@ -31,9 +31,10 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
       onSubmit={formik.handleSubmit}
       className="grid grid-cols-1 md:grid-cols-2 gap-6"
     >
-      {/* Color */}
       <div>
-        <label className="block text-sm font-medium">Color</label>
+        <label htmlFor="color" className="block text-sm font-medium">
+          Color
+        </label>
         <select
           name="color"
           disabled={editMode}
@@ -56,9 +57,10 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
         )}
       </div>
 
-      {/* Tamaño */}
       <div>
-        <label className="block text-sm font-medium">Tamaño</label>
+        <label htmlFor="tamaño" className="block text-sm font-medium">
+          Tamaño
+        </label>
         <select
           name="size"
           value={formik.values.size}
@@ -81,9 +83,10 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
         )}
       </div>
 
-      {/* Precio */}
       <div>
-        <label className="block text-sm font-medium">Precio</label>
+        <label htmlFor="" className="block text-sm font-medium">
+          Precio
+        </label>
         <input
           type="number"
           name="price"
@@ -97,7 +100,6 @@ const DuckForm = ({ onSubmit, editMode, initialValuesEdit }: DuckFormProps) => {
         )}
       </div>
 
-      {/* Cantidad */}
       <div>
         <label className="block text-sm font-medium">Cantidad</label>
         <input

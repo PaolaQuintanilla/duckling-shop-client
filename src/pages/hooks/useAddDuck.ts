@@ -1,40 +1,29 @@
-import { useEffect, useState } from "react";
-import Card from "../../components/Card/Card";
-import DuckForm from "../../components/DuckForm/DuckForm";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { useDucks } from "../../hooks/useDucks";
-import type { DuckInput } from "../../utils/types/DuckTypes";
 import { convertToEnglish } from "../../utils/convertColorAndSize";
+import type { DuckInput } from "../../utils/types/DuckTypes";
+import { useDucks } from "../../hooks/useDucks";
 
-type DuckFormPageProps = {
-  editMode?: boolean;
-};
-
-//DELETE editMode
-export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
+export const useDuckForm = (editMode: boolean) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { createDuck, updateDuck, getDuckById } = useDucks();
 
-  const { createDuck, updateDuck } = useDucks();
   const [initialValues, setInitialValues] = useState<DuckInput | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loadDuck = async () => {
       if (editMode && id) {
         setLoading(true);
         try {
-          const response = await fetch(`http://localhost:3000/ducks/${id}`);
-          if (!response.ok) throw new Error("No se pudo obtener el patito");
-          const data = await response.json();
-
+          const data = await getDuckById(id);
           const { color, size } = data;
           const { color: spanishColor, size: spanishSize } = convertToEnglish(
             color,
             size,
             true
           );
-
           setInitialValues({ ...data, color: spanishColor, size: spanishSize });
         } catch (error) {
           console.error("Error cargando el patito:", error);
@@ -48,7 +37,7 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
     loadDuck();
   }, [editMode, id, navigate]);
 
-  const addDuck = async (data: DuckInput) => {
+  const submitDuck = async (data: DuckInput) => {
     try {
       const { color: englishColor, size: englishSize } = convertToEnglish(
         data.color,
@@ -56,6 +45,7 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
       );
       data.color = englishColor;
       data.size = englishSize;
+
       if (editMode && id) {
         await updateDuck(id, data);
         console.log("Patito actualizado ✅");
@@ -63,21 +53,16 @@ export const AddDuckPage = ({ editMode = false }: DuckFormPageProps) => {
         await createDuck(data);
         console.log("Patito creado ✅");
       }
+
       navigate("/almacen");
     } catch (err) {
       console.log("Error al guardar el patito ❌" + err);
     }
   };
 
-  if (editMode && loading) return <p className="p-4">Cargando patito...</p>;
-
-  return (
-    <Card title={editMode ? "Editar Patito" : "Nuevo Patito"}>
-      <DuckForm
-        onSubmit={addDuck}
-        initialValuesEdit={initialValues ?? undefined}
-        editMode={editMode}
-      />
-    </Card>
-  );
+  return {
+    initialValues,
+    loading,
+    submitDuck,
+  };
 };

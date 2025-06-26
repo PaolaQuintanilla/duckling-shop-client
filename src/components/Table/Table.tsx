@@ -20,7 +20,7 @@ const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
         </tr>
       </thead>
       <tbody>
-        {ducks.map((duck) => (
+        {ducks?.map((duck) => (
           <tr key={duck._id} className="text-center">
             <td className="border px-4 py-2">{duck._id}</td>
             <td className="border px-4 py-2">{duck.color}</td>

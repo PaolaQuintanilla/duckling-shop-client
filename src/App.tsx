@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import ListDucks from "./pages/ListDucks/ListDucks";
-import { AddDuckPage } from "./pages/AddDuck/AddDuckPage";
+import ListDucks from "./pages/Ducks/ListDucks/ListDucks";
+import { AddDuckPage } from "./pages/Ducks/AddDuck/AddDuckPage";
 
 function App() {
   return (
