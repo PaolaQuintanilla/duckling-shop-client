@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { schemaFormDuck } from "../../utils/validations/LoginValidation";
+import { schemaFormDuck } from "../../utils/validations/DuckValidation";
 import type { DuckInput } from "../../utils/types/DuckTypes";
 import { colorOptions, sizeOptions } from "../../utils/convertColorAndSize";
 
