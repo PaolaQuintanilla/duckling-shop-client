@@ -30,3 +30,9 @@
 | **Vite**            | ^6.3.5  | Fast development and build tool   |
 | **Jest**            | ^30.0.3 | Testing framework                 |
 | **Testing Library** | ^16.3.0 | React component testing utilities |
+
+### 🔍 Scripts
+
+- `npm install` - Install dependencies.
+- `npm run start` – Start development server with hot-reload.
+- `npm run test` – Run unit tests.

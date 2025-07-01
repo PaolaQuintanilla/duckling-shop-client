@@ -1,3 +1,9 @@
+import {
+  colorDictionary,
+  sizeDictionary,
+  type ColorKey,
+  type SizeKey,
+} from "../../utils/translation";
 import type { Duck } from "../../utils/types/DuckTypes";
 
 type DuckTableProps = {
@@ -23,8 +29,12 @@ const DuckTable = ({ ducks, onEdit, onDelete }: DuckTableProps) => {
         {ducks?.map((duck) => (
           <tr key={duck._id} className="text-center">
             <td className="border px-4 py-2">{duck._id}</td>
-            <td className="border px-4 py-2">{duck.color}</td>
-            <td className="border px-4 py-2">{duck.size}</td>
+            <td className="border px-4 py-2">
+              {colorDictionary["es"]?.[duck.color as ColorKey] || duck.color}
+            </td>
+            <td className="border px-4 py-2">
+              {sizeDictionary["es"]?.[duck.size as SizeKey] || duck.size}
+            </td>
             <td className="border px-4 py-2">${duck.price}</td>
             <td className="border px-4 py-2">{duck.quantity}</td>
             <td className="border px-4 py-2">

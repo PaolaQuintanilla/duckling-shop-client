@@ -12,6 +12,7 @@ export const sizeOptions = [
   { name: "Grande", value: "Large" },
   { name: "ExtraGrande", value: "XLarge" },
 ];
+
 export const convertToEnglish = (
   color: string,
   size: string,
