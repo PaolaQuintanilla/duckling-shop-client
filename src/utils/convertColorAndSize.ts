@@ -6,11 +6,11 @@ export const colorOptions = [
 ];
 
 export const sizeOptions = [
-  { name: "XPequeño", value: "XSmall" },
-  { name: "Pequeño", value: "Small" },
-  { name: "Mediano", value: "Medium" },
-  { name: "Grande", value: "Large" },
-  { name: "ExtraGrande", value: "XLarge" },
+  { name: "XPequeño", value: "xsmall" },
+  { name: "Pequeño", value: "small" },
+  { name: "Mediano", value: "medium" },
+  { name: "Grande", value: "large" },
+  { name: "ExtraGrande", value: "xlarge" },
 ];
 
 export const convertToEnglish = (

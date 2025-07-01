@@ -1,5 +1,5 @@
 export type ColorKey = "red" | "green" | "yellow" | "black";
-export type SizeKey = "XSmall" | "Small" | "Medium" | "Large" | "XLarge";
+export type SizeKey = "xsmall" | "small" | "medium" | "large" | "xlarge";
 
 export const colorDictionary: Record<"en" | "es", Record<ColorKey, string>> = {
   en: {
@@ -18,17 +18,17 @@ export const colorDictionary: Record<"en" | "es", Record<ColorKey, string>> = {
 
 export const sizeDictionary: Record<"en" | "es", Record<SizeKey, string>> = {
   en: {
-    XSmall: "XSmall",
-    Small: "Small",
-    Medium: "Medium",
-    Large: "Large",
-    XLarge: "XLarge",
+    xsmall: "XSmall",
+    small: "Small",
+    medium: "Medium",
+    large: "Large",
+    xlarge: "XLarge",
   },
   es: {
-    XSmall: "XPequeño",
-    Small: "Pequeño",
-    Medium: "Mediano",
-    Large: "Grande",
-    XLarge: "ExtraGrande",
+    xsmall: "XPequeño",
+    small: "Pequeño",
+    medium: "Mediano",
+    large: "Grande",
+    xlarge: "ExtraGrande",
   },
 };

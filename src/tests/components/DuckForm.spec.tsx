@@ -7,8 +7,8 @@ jest.mock("../../utils/convertColorAndSize", () => ({
     { name: "Verde", value: "green" },
   ],
   sizeOptions: [
-    { name: "XSmall", value: "xsmall" },
-    { name: "Small", value: "small" },
+    { name: "xsmall", value: "xsmall" },
+    { name: "small", value: "small" },
   ],
 }));
 
