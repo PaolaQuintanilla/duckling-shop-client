@@ -48,15 +48,15 @@ export const useDuckForm = (editMode: boolean) => {
 
       if (editMode && id) {
         await updateDuck(id, data);
-        console.log("Patito actualizado ✅");
+        console.log("Patito actualizado");
       } else {
         await createDuck(data);
-        console.log("Patito creado ✅");
+        console.log("Patito creado");
       }
 
       navigate("/almacen");
     } catch (err) {
-      console.log("Error al guardar el patito ❌" + err);
+      console.log("Error al guardar el patito" + err);
     }
   };
 
