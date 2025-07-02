@@ -34,7 +34,7 @@
 ### 🔍 Scripts
 
 - `npm install` - Install dependencies.
-- `npm run start` – Start development server with hot-reload.
+- `npm run dev` – Start development server with hot-reload.
 - `npm run test` – Run unit tests.
 
 **URL:**
