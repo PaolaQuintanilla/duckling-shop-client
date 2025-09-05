@@ -1,7 +1,8 @@
 import axios from "axios";
 import type { DuckInput } from "../utils/types/DuckTypes";
 
-const API_URL = "http://localhost:3000/ducks";
+const API_URL =
+  "https://duckling-shop-api-git-develop-paolas-projects-a3e71503.vercel.app/ducks";
 
 export const duckService = {
   create: (data: DuckInput) => axios.post(API_URL, data),
